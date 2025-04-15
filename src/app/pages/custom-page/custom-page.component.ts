@@ -6,6 +6,9 @@ import { heroColorPipe } from '../../pipes/heroColor-case.pipe';
 import { heroTextColorPipe } from '../../pipes/hero-text-color.pipe';
 import { TitleCasePipe } from '@angular/common';
 import { heroCreatorPipe } from '../../pipes/hero-creator.pipe';
+import { heroSortByPipe } from '../../pipes/hero-sort-by.pipe';
+import { Hero } from '../../interfaces/hero.interface';
+import { heroFilterPipe } from '../../pipes/hero-filter.pipe';
 
 
 @Component({
@@ -17,6 +20,8 @@ import { heroCreatorPipe } from '../../pipes/hero-creator.pipe';
     heroTextColorPipe,
     TitleCasePipe,
     heroCreatorPipe,
+    heroSortByPipe,
+    heroFilterPipe,
   ],
   templateUrl: './custom-page.component.html',
 })
@@ -25,5 +30,9 @@ export default class CustomPageComponent {
   name = signal('Nicolas Cruz');
   upperCase = signal(true)
   heroes= signal(heroes);
+
+  sortBy = signal<keyof Hero | null> (null);
+
+  searchQuery = signal('');
 
 }
